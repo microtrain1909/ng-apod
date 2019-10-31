@@ -10,13 +10,14 @@
     <!-- Only show the image element if the media_type is set to image -->
     <img *ngIf="apod.media_type==='image'" [src]="apod.url" [alt]="apod.title">
   
+    <div id="video" *ngIf="apod.media_type==='video'">
     <!-- Display and embed the YouTube video if the media_type is set to video -->
     <iframe *ngIf="apod.media_type==='video'" [src]="apod.url | safe: 'resourceUrl'" frameborder="0" allowfullscreen></iframe>
+    </div>
 
     <div>
       <!-- 
-        Only select images have a copyright, if apod.copyright is 
-        empty we will not attempt to show it
+        Only select images have a copyright, if apod.copyright is empty we will not attempt to show it
       -->
       <span *ngIf="apod.copyright">&copy; {{ apod.copyright }} </span>
       {{ apod.date }}
